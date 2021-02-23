@@ -15,7 +15,13 @@ def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find_all('div', class_='catalog-product')
 
-    print(items)
+    smartphones = []
+    for item in items:
+        smartphones.append({
+            'title': item.find('a', class_='catalog-product__name').get_text(strip=True),
+        })
+
+    print(smartphones)
 
 
 def parce():
