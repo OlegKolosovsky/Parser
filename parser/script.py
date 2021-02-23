@@ -11,10 +11,17 @@ def get_html(url, params=None):
     return r
 
 
+def get_content(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    items = soup.find_all('div', class_='catalog-product')
+
+    print(items)
+
+
 def parce():
     html = get_html(URL)
     if html.status_code == 200:
-        parce
+        get_content(html.text)
     else:
         print('Не удаётся установить соединение с сайтом.')
 
